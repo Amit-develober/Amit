@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amit</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Tic Tac Toe</h1>
+        
+        <div class="game-mode">
+            <button id="vs-player" class="active">vs Player</button>
+            <button id="vs-ai">vs AI</button>
+        </div>
+
+        <div class="difficulty-selector" style="display: none;">
+            <label>AI Difficulty:</label>
+            <div class="difficulty-buttons">
+                <button class="difficulty-btn" data-difficulty="easy">Easy</button>
+                <button class="difficulty-btn active" data-difficulty="medium">Medium</button>
+                <button class="difficulty-btn" data-difficulty="hard">Hard</button>
+            </div>
+        </div>
+
+        <div class="status-section">
+            <div id="player-turn" class="status">Player X's Turn</div>
+            <div id="theme-toggle">
+                <input type="checkbox" id="dark-mode" class="toggle">
+                <label for="dark-mode">Dark Mode</label>
+            </div>
+        </div>
+
+        <div class="game-board">
+            <div class="cell" data-index="0"></div>
+            <div class="cell" data-index="1"></div>
+            <div class="cell" data-index="2"></div>
+            <div class="cell" data-index="3"></div>
+            <div class="cell" data-index="4"></div>
+            <div class="cell" data-index="5"></div>
+            <div class="cell" data-index="6"></div>
+            <div class="cell" data-index="7"></div>
+            <div class="cell" data-index="8"></div>
+        </div>
+
+        <button id="restart" class="restart-btn">Restart Game</button>
+
+        <div class="score-board">
+            <div class="score">
+                <span>Player X: </span>
+                <span id="score-x">0</span>
+            </div>
+            <div class="score">
+                <span>Player O: </span>
+                <span id="score-o">0</span>
+            </div>
+        </div>
+    </div>
+
+    <div id="win-modal" class="modal">
+        <div class="modal-content">
+            <h2 id="win-message"></h2>
+            <button id="play-again">Play Again</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html> 
