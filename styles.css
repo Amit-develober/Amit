@@ -8,6 +8,12 @@
     --border-color: #dcdde1;
     --hover-color: #f1f2f6;
     --shadow-color: rgba(0, 0, 0, 0.1);
+    --rainbow-1: #ff6b6b;
+    --rainbow-2: #ffd93d;
+    --rainbow-3: #6c5ce7;
+    --rainbow-4: #a8e6cf;
+    --rainbow-5: #ff8993;
+    --rainbow-6: #81ecec;
 }
 
 /* Dark mode variables */
@@ -46,10 +52,21 @@ body {
 h1 {
     font-size: 3.5rem;
     margin-bottom: 2rem;
-    color: var(--primary-color);
-    text-shadow: 2px 2px 4px var(--shadow-color);
+    background: linear-gradient(45deg, 
+        var(--rainbow-1),
+        var(--rainbow-2),
+        var(--rainbow-3),
+        var(--rainbow-4),
+        var(--rainbow-5),
+        var(--rainbow-6)
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: rainbow-text 8s linear infinite;
     font-weight: 700;
     letter-spacing: 2px;
+    text-shadow: none;
 }
 
 .game-mode {
@@ -72,9 +89,13 @@ h1 {
 }
 
 .game-mode button.active {
-    background-color: var(--primary-color);
+    background: linear-gradient(45deg, 
+        var(--rainbow-1),
+        var(--rainbow-2)
+    );
     color: white;
     transform: translateY(-2px);
+    animation: rainbow-shadow 4s linear infinite;
 }
 
 .game-mode button:hover {
@@ -124,9 +145,13 @@ h1 {
 }
 
 .difficulty-btn.active {
-    background-color: var(--primary-color);
+    background: linear-gradient(45deg, 
+        var(--rainbow-3),
+        var(--rainbow-4)
+    );
     color: white;
     transform: translateY(-2px);
+    animation: rainbow-shadow 4s linear infinite;
 }
 
 .status-section {
@@ -177,7 +202,10 @@ h1 {
 }
 
 .toggle:checked {
-    background-color: var(--primary-color);
+    background: linear-gradient(45deg, 
+        var(--rainbow-5),
+        var(--rainbow-6)
+    );
 }
 
 .toggle:checked::before {
@@ -188,16 +216,23 @@ h1 {
     display: grid;
     grid-template-columns: repeat(3, auto);
     gap: 12px;
-    background-color: var(--border-color);
+    background: linear-gradient(45deg, 
+        var(--rainbow-1),
+        var(--rainbow-2),
+        var(--rainbow-3),
+        var(--rainbow-4),
+        var(--rainbow-5),
+        var(--rainbow-6)
+    );
     padding: 12px;
     border-radius: 15px;
-    box-shadow: 0 8px 16px var(--shadow-color);
+    animation: rainbow-shadow 4s linear infinite;
 }
 
 .cell {
     width: var(--cell-size);
     height: var(--cell-size);
-    background-color: var(--background);
+    background-color: rgba(255, 255, 255, 0.9);
     border-radius: 12px;
     display: flex;
     justify-content: center;
@@ -209,44 +244,55 @@ h1 {
 }
 
 .cell:hover {
-    background-color: var(--hover-color);
-    transform: scale(1.02);
+    transform: scale(1.05);
+    animation: rainbow-shadow 4s linear infinite;
 }
 
 .cell.x::before {
     content: 'X';
-    color: #e74c3c;
+    background: linear-gradient(45deg, #ff6b6b, #ff8993);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
     font-weight: bold;
 }
 
 .cell.o::before {
     content: 'O';
-    color: var(--primary-color);
+    background: linear-gradient(45deg, #6c5ce7, #81ecec);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
     font-weight: bold;
 }
 
 .cell.winner {
-    background-color: rgba(46, 204, 113, 0.2);
-    animation: winner-pulse 1.5s infinite;
+    background: linear-gradient(45deg, 
+        rgba(46, 204, 113, 0.2),
+        rgba(52, 152, 219, 0.2)
+    );
+    animation: winner-pulse 1.5s infinite, rainbow-shadow 4s linear infinite;
 }
 
 .restart-btn {
     margin-top: 2rem;
     padding: 1rem 2rem;
     font-size: 1.2rem;
-    background-color: var(--secondary-color);
+    background: linear-gradient(45deg, 
+        var(--rainbow-3),
+        var(--rainbow-4)
+    );
     color: white;
     border: none;
     border-radius: 10px;
     cursor: pointer;
     transition: all 0.3s ease;
-    box-shadow: 0 4px 6px var(--shadow-color);
+    animation: rainbow-shadow 4s linear infinite;
     font-weight: 600;
 }
 
 .restart-btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 8px var(--shadow-color);
+    transform: translateY(-2px) scale(1.05);
 }
 
 .score-board {
@@ -254,10 +300,13 @@ h1 {
     display: flex;
     gap: 3rem;
     font-size: 1.3rem;
-    background-color: var(--hover-color);
+    background: linear-gradient(45deg, 
+        rgba(106, 176, 76, 0.1),
+        rgba(52, 152, 219, 0.1)
+    );
     padding: 1rem 2rem;
     border-radius: 10px;
-    box-shadow: 0 4px 6px var(--shadow-color);
+    animation: rainbow-shadow 4s linear infinite;
 }
 
 .score {
@@ -336,6 +385,33 @@ h1 {
         opacity: 1;
         transform: scale(1);
     }
+}
+
+@keyframes rainbow-text {
+    0% { color: var(--rainbow-1); }
+    20% { color: var(--rainbow-2); }
+    40% { color: var(--rainbow-3); }
+    60% { color: var(--rainbow-4); }
+    80% { color: var(--rainbow-5); }
+    100% { color: var(--rainbow-6); }
+}
+
+@keyframes rainbow-shadow {
+    0% { box-shadow: 0 0 10px var(--rainbow-1); }
+    20% { box-shadow: 0 0 10px var(--rainbow-2); }
+    40% { box-shadow: 0 0 10px var(--rainbow-3); }
+    60% { box-shadow: 0 0 10px var(--rainbow-4); }
+    80% { box-shadow: 0 0 10px var(--rainbow-5); }
+    100% { box-shadow: 0 0 10px var(--rainbow-6); }
+}
+
+@keyframes rainbow-border {
+    0% { border-color: var(--rainbow-1); }
+    20% { border-color: var(--rainbow-2); }
+    40% { border-color: var(--rainbow-3); }
+    60% { border-color: var(--rainbow-4); }
+    80% { border-color: var(--rainbow-5); }
+    100% { border-color: var(--rainbow-6); }
 }
 
 @media (max-width: 600px) {
